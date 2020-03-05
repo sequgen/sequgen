@@ -1,0 +1,38 @@
+---
+class_name: "Test_0"
+description: > 
+    Part of a test dataset to test classifiers.
+    This one is the no-signal baseline only containing noise.
+class_creator: Florian Huber
+last_updated: 05-03-2020
+
+# Define time series format
+n_channels: 10
+n_timepoints: 400
+    
+# Define rules for generating noise(s).
+noise_description: >
+    Combination of gaussian noise and random walker.
+noise_defs:
+- channels: all
+  noise_amp: [0.05, 0.06]
+  noise_type: gaussian
+- channels: all
+  noise_amp: [0.018, 0.022]
+  noise_type: random_walk
+  
+# Define rules for generating shape(s).
+shape_description: >
+    No overall shape added.
+#shape_defs:
+#- channels: [8, 9]
+#  shape_amp: 0.4
+#  shape_iter: 8
+#  shape_shift: 0
+#  shape_type: cosine
+
+  
+# Define rules for generating signals.
+signal_description: >
+    No signals added.
+
