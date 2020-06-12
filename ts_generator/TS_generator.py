@@ -1,3 +1,5 @@
+from typing import List
+from typing import Tuple
 import yaml
 import numpy as np
 from scipy import signal as scipysig
@@ -7,10 +9,28 @@ from scipy import signal as scipysig
 # Main functions
 # ----------------------------------------------------------------------------
 
-def generate_dataset(TS_class_files,
-                     instances_per_class,
-                     random_seed=None):
-    """
+def generate_dataset(TS_class_files: List[str], instances_per_class: int,
+                     random_seed: int = None) -> Tuple(np.ndarray, List[str]):
+    """Generate dataset if given time series types.
+
+    Parameters
+    ----------
+    TS_class_files
+        Expects list of filaname of yaml file describing the respective time
+        series types.
+    instances_per_class
+        Number of instances that will be generated per given times series class.
+    random_seed
+        Define random_seed to get reproducible datasets. The default is None
+        which will not set a random seed.
+
+    Returns
+    -------
+    X_data
+        Generated stack of time series as numpy array. Dimensions are
+        [#sample, #channels, #time].
+    y_data
+        List of labels. Will give the "class_name" from the yaml file as label.
     """
     if random_seed is not None:
         np.random.seed(random_seed)
@@ -313,7 +333,7 @@ def add_signal(X,
 
 
 def add_noise(X: np.ndarray, noise_dict: dict):
-    """
+    """Add noise to signal.
 
     Args:
     -------
@@ -342,9 +362,8 @@ def add_noise(X: np.ndarray, noise_dict: dict):
     return None
 
 
-def add_shape(X,
-              shape_dict):
-    """
+def add_shape(X: np.ndarray, shape_dict: dict):
+    """Add specified shape to signal.
     """
     #TODO: add option to import custom function to generate any desired shape!
 
