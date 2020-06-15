@@ -10,7 +10,7 @@ from scipy import signal as scipysig
 # ----------------------------------------------------------------------------
 
 def generate_dataset(TS_class_files: List[str], instances_per_class: int,
-                     random_seed: int = None) -> Tuple(np.ndarray, List[str]):
+                     random_seed: int = None) -> Tuple[np.ndarray, List[str]]:
     """Generate dataset if given time series types.
 
     Parameters
@@ -158,7 +158,7 @@ def generate_signals(signal_def):
     # Generate number peaks per channel
     peaks_gen = interpret_parameter(peaks_per_ch, random_int)
 
-    for i in range(peaks_gen):
+    for _ in range(peaks_gen):
         # Generate signal position
         position_gen = interpret_parameter(position, random_int)
 
