@@ -31,3 +31,15 @@ TSC_01 = {'class_name': 'Simple example',
                          }]
           }
 ```
+The defined class can then be used to generate according time series. 
+```python
+import TS_generator as TSgen
+import TS_plotting as TSplot
+
+X = TSgen.generate_TS(TSC_01,
+                       random_seed = None,
+                       ignore_noise = False)
+
+TSplot.plot_TS(X, TSC_01)
+```
+![](documentation/time_series_example.png?raw=true)
