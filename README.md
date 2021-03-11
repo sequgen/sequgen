@@ -1,3 +1,7 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4596774.svg)](https://doi.org/10.5281/zenodo.4596774)
+
+
+
 # Time Series Generator
 Create synthetic time series data of defined type (or class).
 
