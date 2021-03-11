@@ -71,7 +71,7 @@ def load_TS_class(filename,
     """
 
     with open(filename, 'r') as ymlfile:
-        TS_def = yaml.load(ymlfile)
+        TS_def = yaml.load(ymlfile, Loader=yaml.SafeLoader)
 
     if print_info:
         print(TS_def['class_name'])
