@@ -3,3 +3,8 @@ config.py
 *.pdf
 __pycache__
 models_trained/
+
+
+/.idea
+/venv3
+
