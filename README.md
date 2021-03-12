@@ -22,6 +22,9 @@ pip install .
 
 # install the package's development dependencies
 pip install .[dev]
+
+# test if the unit tests work
+pytest
 ```
 
 ### Example of a time series class definition
