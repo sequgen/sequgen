@@ -2,7 +2,7 @@ from ts_generator.TS_generator import generate_TS as generate_time_series
 import numpy
 
 
-def test_crude_test():
+def test_crude():
 
     constraints = {
         'class_name': 'Simple example',
