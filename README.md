@@ -9,7 +9,7 @@ The class description needs to contain all necessary characteristics of both sig
 
 ```shell
 # make a virtual environment
-python -m venv venv3
+python3 -m venv venv3
 
 # activate the virtual environment
 source venv3/bin/activate
