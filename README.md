@@ -9,7 +9,32 @@ Create synthetic time series data of defined type (or class).
 A times series class can be provided as a Python dictionary or loaded from yaml files.
 The class description needs to contain all necessary characteristics of both signal (``signal_defs``) and noise (``noise_defs``).
 
+## Install
+
+```shell
+# make a virtual environment
+python3 -m venv venv3
+
+# activate the virtual environment
+source venv3/bin/activate
+
+# upgrade pip 
+pip install --upgrade pip
+
+# install the package
+pip install .
+
+# install the package's development dependencies
+pip install .[dev]
+
+# test if the unit tests work
+pytest
+```
+
 ### Example of a time series class definition
+
+
+
 
 ```python
 TSC_01 = {'class_name': 'Simple example',
