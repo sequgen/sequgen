@@ -11,54 +11,70 @@ from matplotlib import pyplot as plt
 def mvp():
 
     class ParameterSpace:
-        def __init__(self, dimension_names=None, lower_bounds=None, upper_bounds=None, sampler=None):
-            self.dimension_names = dimension_names
-            self.lower_bounds = lower_bounds
-            self.upper_bounds = upper_bounds
+        def __init__(self, dimensions, sampler=None):
+            self.dimension_names = list()
+            self.lower_bounds = list()
+            self.upper_bounds = list()
             if sampler is None:
                 self.sampler = sample_uniform_random
             else:
                 self.sampler = sampler
+
+            for dimension in dimensions:
+                self.dimension_names.append(dimension.name)
+                self.lower_bounds.append(dimension.lower_bound)
+                self.upper_bounds.append(dimension.upper_bound)
 
         def sample(self):
             return self.sampler(dimension_names=self.dimension_names,
                                 lower_bounds=self.lower_bounds,
                                 upper_bounds=self.upper_bounds)
 
+    class Dimension():
+        def __init__(self, name, lower_bound, upper_bound):
+            self.name = name
+            self.lower_bound = lower_bound
+            self.upper_bound = upper_bound
+
     def parameterize_noise1():
         # take a sample of noise1's parameter space according to the uniform random sampling strategy
-        parameter_space = ParameterSpace(dimension_names=["stddev"],
-                                         lower_bounds=numpy.asarray([0.05], dtype="float"),
-                                         upper_bounds=numpy.asarray([0.1], dtype="float"))
-        return parameter_space.sample()
+        dims = [Dimension("stddev", 0.05, 0.1)]
+        return ParameterSpace(dims).sample()
 
     def parameterize_signal1():
         # take a sample of signal1's parameter space according to the uniform random sampling strategy
-        parameter_space = ParameterSpace(dimension_names=["amplitude", "average", "wavelength"],
-                                         lower_bounds=numpy.asarray([0, 0.1, 3], dtype="float"),
-                                         upper_bounds=numpy.asarray([1, 0.9, 5], dtype="float"))
-        return parameter_space.sample()
+        dims = [
+            Dimension("amplitude", 0, 1),
+            Dimension("average", 0.1, 0.9),
+            Dimension("wavelength", 3, 5),
+        ]
+        return ParameterSpace(dims).sample()
 
     def parameterize_signal2():
         # take a sample of signal2's parameter space according to the uniform random sampling strategy
-        parameter_space = ParameterSpace(dimension_names=["height", "placement", "width_base_left", "width_base_right"],
-                                         lower_bounds=numpy.asarray([1, 0, 0.01, 0.01], dtype="float"),
-                                         upper_bounds=numpy.asarray([2, 20, 2.0, 3.0], dtype="float"))
-        return parameter_space.sample()
+        dims = [
+            Dimension("height", 1, 2),
+            Dimension("placement", 0, 20),
+            Dimension("width_base_left", 0.01, 2.0),
+            Dimension("width_base_right", 0.01, 3.0),
+        ]
+        return ParameterSpace(dims).sample()
 
     def parameterize_signal3():
         # take a sample of signal3's parameter space according to the uniform random sampling strategy
-        parameter_space = ParameterSpace(dimension_names=["value"],
-                                         lower_bounds=numpy.asarray([100], dtype="float"),
-                                         upper_bounds=numpy.asarray([200], dtype="float"))
-        return parameter_space.sample()
+        dims = [
+            Dimension("value", 100, 200)
+        ]
+        return ParameterSpace(dims).sample()
 
     def parameterize_signal4():
         # take a sample of signal4's parameter space according to the uniform random sampling strategy
-        parameter_space = ParameterSpace(dimension_names=["location", "stddev", "height"],
-                                         lower_bounds=numpy.asarray([3, 0.2, 0.5], dtype="float"),
-                                         upper_bounds=numpy.asarray([10, 1.2, 2], dtype="float"))
-        return parameter_space.sample()
+        dims = [
+            Dimension("location", 3, 10),
+            Dimension("stddev", 0.2, 1.2),
+            Dimension("height", 0.5, 2)
+        ]
+        return ParameterSpace(dims).sample()
 
     def visualize():
         plt.figure()
