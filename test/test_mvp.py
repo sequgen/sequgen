@@ -3,38 +3,13 @@ from ts_generator.deterministic.triangular_peak import triangular_peak as signal
 from ts_generator.deterministic.constant import constant as signal3
 from ts_generator.deterministic.normal_peak import normal_peak as signal4
 from ts_generator.stochastic.white import white as noise1
-from ts_generator.samplers.sample_uniform_random import sample_uniform_random
+from ts_generator.parameter_space import ParameterSpace
+from ts_generator.dimension import Dimension
 import numpy
 from matplotlib import pyplot as plt
 
 
 def mvp():
-
-    class ParameterSpace:
-        def __init__(self, dimensions, sampler=None):
-            self.dimension_names = list()
-            self.lower_bounds = list()
-            self.upper_bounds = list()
-            if sampler is None:
-                self.sampler = sample_uniform_random
-            else:
-                self.sampler = sampler
-
-            for dimension in dimensions:
-                self.dimension_names.append(dimension.name)
-                self.lower_bounds.append(dimension.lower_bound)
-                self.upper_bounds.append(dimension.upper_bound)
-
-        def sample(self):
-            return self.sampler(dimension_names=self.dimension_names,
-                                lower_bounds=self.lower_bounds,
-                                upper_bounds=self.upper_bounds)
-
-    class Dimension():
-        def __init__(self, name, lower_bound, upper_bound):
-            self.name = name
-            self.lower_bound = lower_bound
-            self.upper_bound = upper_bound
 
     def parameterize_noise1():
         # take a sample of noise1's parameter space according to the uniform random sampling strategy
