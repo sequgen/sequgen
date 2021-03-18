@@ -11,84 +11,33 @@ from matplotlib import pyplot as plt
 
 def mvp():
 
-    def parameterize_signal1():
-        # take a sample of signal1's parameter space according to the uniform random sampling strategy
-        dims = [
-            Dimension("amplitude", 0, 1),
-            Dimension("average", 0.1, 0.9),
-            Dimension("wavelength", 3, 5),
-        ]
-        return ParameterSpace(dims).sample()
-
-    def parameterize_signal2():
-        # take a sample of signal2's parameter space according to the uniform random sampling strategy
-        dims = [
-            Dimension("height", 1, 2),
-            Dimension("placement", 0, 20),
-            Dimension("width_base_left", 0.1, 0.5),
-            Dimension("width_base_right", 2.0, 3.0),
-            Dimension("sign", -1)
-        ]
-        return ParameterSpace(dims).sample()
-
-    def parameterize_signal3():
-        # take a sample of signal3's parameter space according to the uniform random sampling strategy
-        dims = [
-            Dimension("value", 100, 200)
-        ]
-        return ParameterSpace(dims).sample()
-
-    def parameterize_signal4():
-        # take a sample of signal4's parameter space according to the uniform random sampling strategy
-        dims = [
-            Dimension("location", 3, 10),
-            Dimension("stddev", 0.2, 1.2),
-            Dimension("height", 0.5, 2)
-        ]
-        return ParameterSpace(dims).sample()
-
-    def parameterize_noise1():
-        # take a sample of noise1's parameter space according to the uniform random sampling strategy
-        dims = [
-            Dimension("stddev", 1),
-            Dimension("correlation_length", 2)
-        ]
-        return ParameterSpace(dims).sample()
-
     def visualize():
         plt.figure()
 
         # plot signal 1
         plt.subplot(3, 2, 1)
         plt.plot(t_predict, y_predict_signal1, '.b-')
-        fmt_str = "average={average:.2f}, amplitude={amplitude:.2f}, " + \
-                  "wavelength={wavelength:.2f}"
-        plt.title(fmt_str.format(**parameters_signal1))
+        plt.title(signal1_parameter_space.format_str().format(**signal1_parameters))
 
         # plot signal 2
         plt.subplot(3, 2, 2)
         plt.plot(t_predict, y_predict_signal2, '.b-')
-        fmt_str = "height={height:.2f}, placement={placement:.2f}, " + \
-                  "width_base_left={width_base_left:.2f}, width_base_right={width_base_right:.2f}, sign={sign:.0f}"
-        plt.title(fmt_str.format(**parameters_signal2))
+        plt.title(signal2_parameter_space.format_str().format(**signal2_parameters))
 
         # plot signal 3
         plt.subplot(3, 2, 3)
         plt.plot(t_predict, y_predict_signal3, '.b-')
-        fmt_str = "value={value:.2f}"
-        plt.title(fmt_str.format(**parameters_signal3))
+        plt.title(signal3_parameter_space.format_str().format(**signal3_parameters))
 
         # plot signal 4
         plt.subplot(3, 2, 4)
         plt.plot(t_predict, y_predict_signal4, '.b-')
-        fmt_str = "location={location:.2f}, stddev={stddev:.2f}, height={height:.2f}, "
-        plt.title(fmt_str.format(**parameters_signal4))
+        plt.title(signal4_parameter_space.format_str().format(**signal4_parameters))
 
         # plot noise 1
         plt.subplot(3, 2, 5)
         plt.stem(t_predict, y_predict_noise1, '.b-')
-        fmt_str = "stddev={stddev:.2f}, correlation_length={correlation_length:.2f}"
-        plt.title(fmt_str.format(**parameters_noise1))
+        plt.title(noise1_parameter_space.format_str().format(**noise1_parameters))
 
         # plot everything stacked
         plt.subplot(3, 2, 6)
@@ -101,18 +50,49 @@ def mvp():
     # where I want the model to predict values
     t_predict = numpy.linspace(-2, 20, 100)
 
-    parameters_signal1 = parameterize_signal1()
-    parameters_signal2 = parameterize_signal2()
-    parameters_signal3 = parameterize_signal3()
-    parameters_signal4 = parameterize_signal4()
-    parameters_noise1 = parameterize_noise1()
+    signal1_parameter_space = ParameterSpace([
+        Dimension("amplitude", 0, 1),
+        Dimension("average", 0.1, 0.9),
+        Dimension("wavelength", 3, 5),
+    ])
+
+    signal2_parameter_space = ParameterSpace([
+        Dimension("height", 1, 2),
+        Dimension("placement", 0, 20),
+        Dimension("width_base_left", 0.1, 0.5),
+        Dimension("width_base_right", 2.0, 3.0),
+        Dimension("sign", -1)
+    ])
+
+    signal3_parameter_space = ParameterSpace([
+        Dimension("value", 100, 200)
+    ])
+
+    signal4_parameter_space = ParameterSpace([
+        Dimension("location", 3, 10),
+        Dimension("stddev", 0.2, 1.2),
+        Dimension("height", 0.5, 2)
+    ])
+
+    noise1_parameter_space = ParameterSpace([
+        Dimension("stddev", 1),
+        Dimension("correlation_length", 2)
+    ])
+
+    signal1_parameters = signal1_parameter_space.sample()
+    signal2_parameters = signal2_parameter_space.sample()
+    signal3_parameters = signal3_parameter_space.sample()
+    signal4_parameters = signal4_parameter_space.sample()
+    noise1_parameters = noise1_parameter_space.sample()
 
     # generate predictions of y at t_predict using the model and the parameterization
-    y_predict_signal1 = signal1(t_predict, **parameters_signal1)
-    y_predict_signal2 = signal2(t_predict, **parameters_signal2)
-    y_predict_signal3 = signal3(t_predict, **parameters_signal3)
-    y_predict_signal4 = signal4(t_predict, **parameters_signal4)
-    y_predict_noise1 = noise1(t_predict, **parameters_noise1)
+    y_predict_signal1 = signal1(t_predict, **signal1_parameters)
+    y_predict_signal2 = signal2(t_predict, **signal2_parameters)
+    y_predict_signal3 = signal3(t_predict, **signal3_parameters)
+    y_predict_signal4 = signal4(t_predict, **signal4_parameters)
+    y_predict_noise1 = noise1(t_predict, **noise1_parameters)
+
+    # combine signal and noise time series
     y_predict = y_predict_signal1 + y_predict_signal2 + y_predict_signal3 + + y_predict_signal4 + y_predict_noise1
 
     # plot to verify

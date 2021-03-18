@@ -22,6 +22,10 @@ class ParameterSpace:
         dimensions_string = ", ".join(["'{0}'".format(name) for name in self.dimension_names])
         return "{0}-D parameter space with dimensions: {1}".format(self.ndims, dimensions_string)
 
+    def format_str(self):
+        names = ["{0}={1}{0}:.2f{2}".format(name, "{", "}") for name in self.dimension_names]
+        return ", ".join(names)
+
     def sample(self):
         return self.sampler(dimension_names=self.dimension_names,
                             lower_bounds=self.lower_bounds,
