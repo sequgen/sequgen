@@ -2,7 +2,7 @@ from ts_generator.deterministic.sine import sine as signal1
 from ts_generator.deterministic.triangular_peak import triangular_peak as signal2
 from ts_generator.deterministic.constant import constant as signal3
 from ts_generator.deterministic.normal_peak import normal_peak as signal4
-from ts_generator.stochastic.white import white as noise1
+from ts_generator.stochastic.gaussian import gaussian as noise1
 from ts_generator.parameter_space import ParameterSpace
 from ts_generator.dimension import Dimension
 import numpy
@@ -10,11 +10,6 @@ from matplotlib import pyplot as plt
 
 
 def mvp():
-
-    def parameterize_noise1():
-        # take a sample of noise1's parameter space according to the uniform random sampling strategy
-        dims = [Dimension("stddev", 0.05, 0.1)]
-        return ParameterSpace(dims).sample()
 
     def parameterize_signal1():
         # take a sample of signal1's parameter space according to the uniform random sampling strategy
@@ -30,8 +25,9 @@ def mvp():
         dims = [
             Dimension("height", 1, 2),
             Dimension("placement", 0, 20),
-            Dimension("width_base_left", 0.01, 2.0),
-            Dimension("width_base_right", 0.01, 3.0),
+            Dimension("width_base_left", 0.1, 0.5),
+            Dimension("width_base_right", 2.0, 3.0),
+            Dimension("sign", -1)
         ]
         return ParameterSpace(dims).sample()
 
@@ -51,6 +47,14 @@ def mvp():
         ]
         return ParameterSpace(dims).sample()
 
+    def parameterize_noise1():
+        # take a sample of noise1's parameter space according to the uniform random sampling strategy
+        dims = [
+            Dimension("stddev", 1),
+            Dimension("correlation_length", 2)
+        ]
+        return ParameterSpace(dims).sample()
+
     def visualize():
         plt.figure()
 
@@ -65,7 +69,7 @@ def mvp():
         plt.subplot(3, 2, 2)
         plt.plot(t_predict, y_predict_signal2, '.b-')
         fmt_str = "height={height:.2f}, placement={placement:.2f}, " + \
-                  "width_base_left={width_base_left:.2f}, width_base_right={width_base_right:.2f}"
+                  "width_base_left={width_base_left:.2f}, width_base_right={width_base_right:.2f}, sign={sign:.0f}"
         plt.title(fmt_str.format(**parameters_signal2))
 
         # plot signal 3
@@ -83,7 +87,7 @@ def mvp():
         # plot noise 1
         plt.subplot(3, 2, 5)
         plt.stem(t_predict, y_predict_noise1, '.b-')
-        fmt_str = "stddev={stddev:.2f}"
+        fmt_str = "stddev={stddev:.2f}, correlation_length={correlation_length:.2f}"
         plt.title(fmt_str.format(**parameters_noise1))
 
         # plot everything stacked
