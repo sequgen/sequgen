@@ -2,7 +2,9 @@ import numpy
 
 
 def triangular_peak(t_predict, width_leading=None, width_base_left=None, width_base_right=None, width_trailing=None,
-                    width=1.0, height=1.0, placement=0):
+                    width=1.0, height=1.0, placement=0, sign=1):
+
+    assert sign in [-1, 1], "sign should be -1 or 1"
 
     if width is None:
         assert width_base_left is not None
@@ -31,4 +33,4 @@ def triangular_peak(t_predict, width_leading=None, width_base_left=None, width_b
 
     t = placement + numpy.cumsum(widths)
 
-    return numpy.interp(t_predict, t, y)
+    return sign * numpy.interp(t_predict, t, y)
