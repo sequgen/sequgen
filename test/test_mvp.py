@@ -45,7 +45,6 @@ def mvp():
         plt.title("combined")
 
         plt.show()
-        pass
 
     # where I want the model to predict values
     t_predict = numpy.linspace(-2, 20, 100)
