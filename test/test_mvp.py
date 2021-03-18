@@ -49,12 +49,14 @@ def mvp():
     # where I want the model to predict values
     t_predict = numpy.linspace(-2, 20, 100)
 
+    # signal1: sine
     signal1_parameter_space = ParameterSpace([
         Dimension("amplitude", 0, 1),
         Dimension("average", 0.1, 0.9),
         Dimension("wavelength", 3, 5),
     ])
 
+    # signal2: triangular_peak
     signal2_parameter_space = ParameterSpace([
         Dimension("height", 1, 2),
         Dimension("placement", 0, 20),
@@ -63,21 +65,25 @@ def mvp():
         Dimension("sign", -1)
     ])
 
+    # signal3: constant
     signal3_parameter_space = ParameterSpace([
         Dimension("value", 100, 200)
     ])
 
+    # signal4: normal_peak
     signal4_parameter_space = ParameterSpace([
         Dimension("location", 3, 10),
         Dimension("stddev", 0.2, 1.2),
         Dimension("height", 0.5, 2)
     ])
 
+    # noise1: gaussian (colored)
     noise1_parameter_space = ParameterSpace([
         Dimension("stddev", 1),
         Dimension("correlation_length", 2)
     ])
 
+    # draw a sample of the parameter space for each space
     signal1_parameters = signal1_parameter_space.sample()
     signal2_parameters = signal2_parameter_space.sample()
     signal3_parameters = signal3_parameter_space.sample()
