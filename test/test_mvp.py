@@ -98,7 +98,7 @@ def mvp():
     y_predict_noise1 = noise1(t_predict, **noise1_parameters)
 
     # combine signal and noise time series
-    y_predict = y_predict_signal1 + y_predict_signal2 + y_predict_signal3 + + y_predict_signal4 + y_predict_noise1
+    y_predict = y_predict_signal1 + y_predict_signal2 + y_predict_signal3 + y_predict_signal4 + y_predict_noise1
 
     # plot to verify
     visualize()
