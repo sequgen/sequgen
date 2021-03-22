@@ -30,4 +30,3 @@ class ParameterSpace:
         return self.sampler(dimension_names=self.dimension_names,
                             lower_bounds=self.lower_bounds,
                             upper_bounds=self.upper_bounds)
-
