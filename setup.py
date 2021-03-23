@@ -53,6 +53,7 @@ setup(
     ],
     extras_require={
         "dev":  [
+            "bumpversion",
             "isort",
             "prospector[with_pyroma]",
             "pycodestyle",
