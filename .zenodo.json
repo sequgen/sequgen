@@ -2,11 +2,26 @@
     "creators": [
         {
             "affiliation": "Netherlands eScience Center",
-            "name": "Huber, Florian",
-            "orcid": "0000-0002-3535-9406"
+            "name": "Spaaks, Jurriaan H.",
+            "orcid": "0000-0002-7064-4069"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "Tjong Kim Sang, Erik",
+            "orcid": "0000-0002-8431-081X"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "Diblen, Faruk",
+            "orcid": "0000-0002-0989-929X"
+        },
+        {
+            "affiliation": "Netherlands eScience Center",
+            "name": "Verhoeven, Stefan",
+            "orcid": "0000-0002-5821-2060"
         }
     ],
-    "description": "Python library to define and generate synthetic time series data",
+    "description": "Python library to define and generate synthetic sequence data",
     "keywords": [
         "Python",
         "synthetic data",
@@ -17,5 +32,5 @@
     "license": {
         "id": "Apache-2.0"
     },
-    "title": "time_series_generator"
+    "title": "sequgen"
 }
