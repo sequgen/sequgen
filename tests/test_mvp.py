@@ -1,8 +1,8 @@
+from matplotlib import pyplot as plt
+import numpy
 from sequgen.deterministic.triangular_peak import triangular_peak
 from sequgen.parameter_space import ParameterSpace
 from sequgen.dimension import Dimension
-import numpy
-from matplotlib import pyplot as plt
 
 
 def test_mvp():
@@ -25,7 +25,7 @@ def test_mvp():
 
     # plot to verify
     plt.figure()
-    plt.plot(t_predict, y_predict, '.b-')
+    plt.plot(t_predict, y_predict, ".b-")
     plt.title(parameter_space.format_str().format(**parameters))
     plt.show()
 
