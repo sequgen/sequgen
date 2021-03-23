@@ -1,8 +1,14 @@
 from ts_generator.samplers.sample_uniform_random import sample_uniform_random
+from ts_generator.dimension import Dimension
+from typing import Iterable
+from typing import Callable
 
 
 class ParameterSpace:
-    def __init__(self, dimensions, sampler=None):
+
+    Dimensions = Iterable[Dimension]
+
+    def __init__(self, dimensions: Dimensions, sampler: Callable = None):
         self.dimension_names = list()
         self.lower_bounds = list()
         self.upper_bounds = list()

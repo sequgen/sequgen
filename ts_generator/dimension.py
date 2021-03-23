@@ -1,5 +1,11 @@
+from typing import Union
+
+
 class Dimension:
-    def __init__(self, name, lower_bound, upper_bound=None):
+
+    Bound = Union[float, int]
+
+    def __init__(self, name: str, lower_bound: Bound, upper_bound: Bound = None):
         self.name = name
         self.lower_bound = lower_bound
         if upper_bound is None:
