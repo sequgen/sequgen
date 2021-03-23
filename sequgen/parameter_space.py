@@ -1,5 +1,5 @@
-from ts_generator.samplers.sample_uniform_random import sample_uniform_random
-from ts_generator.dimension import Dimension
+from sequgen.samplers.sample_uniform_random import sample_uniform_random
+from sequgen.dimension import Dimension
 from typing import Iterable
 from typing import Callable
 

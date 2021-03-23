@@ -1,10 +1,10 @@
-from ts_generator.deterministic.sine import sine as signal1
-from ts_generator.deterministic.triangular_peak import triangular_peak as signal2
-from ts_generator.deterministic.constant import constant as signal3
-from ts_generator.deterministic.normal_peak import normal_peak as signal4
-from ts_generator.stochastic.gaussian import gaussian as noise1
-from ts_generator.parameter_space import ParameterSpace
-from ts_generator.dimension import Dimension
+from sequgen.deterministic.sine import sine as signal1
+from sequgen.deterministic.triangular_peak import triangular_peak as signal2
+from sequgen.deterministic.constant import constant as signal3
+from sequgen.deterministic.normal_peak import normal_peak as signal4
+from sequgen.stochastic.gaussian import gaussian as noise1
+from sequgen.parameter_space import ParameterSpace
+from sequgen.dimension import Dimension
 import numpy
 from matplotlib import pyplot as plt
 

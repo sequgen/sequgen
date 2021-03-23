@@ -1,0 +1,18 @@
+[run]
+data_file = coverage/.coverage
+branch = true
+
+[paths]
+source = sequgen/
+
+[html]
+directory = coverage/htmlcov/
+
+[xml]
+output = coverage/coverage.xml
+
+[report]
+omit =
+    venv*
+    tests/*
+

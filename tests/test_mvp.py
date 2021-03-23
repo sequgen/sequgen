@@ -1,6 +1,6 @@
-from ts_generator.deterministic.triangular_peak import triangular_peak
-from ts_generator.parameter_space import ParameterSpace
-from ts_generator.dimension import Dimension
+from sequgen.deterministic.triangular_peak import triangular_peak
+from sequgen.parameter_space import ParameterSpace
+from sequgen.dimension import Dimension
 import numpy
 from matplotlib import pyplot as plt
 
