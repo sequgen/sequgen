@@ -10,7 +10,10 @@ test-warnings: true
 member-warnings: false
 
 ignore-paths:
-  - docs
+  - docs/conf.py
+  - docs\conf.py
+  - tests
+  - livetests
 
 pyroma:
     run: true

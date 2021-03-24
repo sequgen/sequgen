@@ -1,30 +1,24 @@
-*.py[cod]
-*.egg-info
-*.eggs
-.ipynb_checkpoints
-
-build
-dist
-.cache
-__pycache__
-
-htmlcov
-.coverage
-coverage.xml
-.pytest_cache
+/.idea/
+/**/__pycache__/
+/.venv
+/env*
+/venv*
+/.env*
+/.venv*
+/.eggs
+/.coverage
+/coverage.xml
+/htmlcov/
+/*.egg-info
 
 docs/_build
 docs/apidocs
 
-# ide
-.idea
-.eclipse
-.vscode
+# ignore the coverage reports generated when running pylint with coverage calculation
+/coverage/.coverage
+/coverage/coverage.xml
+/coverage/htmlcov/*
+/coverage/xunit-result.xml
 
-# Mac
-.DS_Store
-
-venv
-venv3
-.venv
-env3
+# don't accidentally commit secrets like apikeys
+/**secret**

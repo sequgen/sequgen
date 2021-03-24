@@ -1,12 +1,12 @@
-from ts_generator.deterministic.sine import sine as signal1
-from ts_generator.deterministic.triangular_peak import triangular_peak as signal2
-from ts_generator.deterministic.constant import constant as signal3
-from ts_generator.deterministic.normal_peak import normal_peak as signal4
-from ts_generator.stochastic.gaussian import gaussian as noise1
-from ts_generator.parameter_space import ParameterSpace
-from ts_generator.dimension import Dimension
-import numpy
 from matplotlib import pyplot as plt
+import numpy
+from sequgen.deterministic.sine import sine as signal1
+from sequgen.deterministic.triangular_peak import triangular_peak as signal2
+from sequgen.deterministic.constant import constant as signal3
+from sequgen.deterministic.normal_peak import normal_peak as signal4
+from sequgen.stochastic.gaussian import gaussian as noise1
+from sequgen.parameter_space import ParameterSpace
+from sequgen.dimension import Dimension
 
 
 def test_five_models():
@@ -16,32 +16,32 @@ def test_five_models():
 
         # plot signal 1
         plt.subplot(3, 2, 1)
-        plt.plot(t_predict, y_predict_signal1, '.b-')
+        plt.plot(t_predict, y_predict_signal1, ".b-")
         plt.title(signal1_parameter_space.format_str().format(**signal1_parameters))
 
         # plot signal 2
         plt.subplot(3, 2, 2)
-        plt.plot(t_predict, y_predict_signal2, '.b-')
+        plt.plot(t_predict, y_predict_signal2, ".b-")
         plt.title(signal2_parameter_space.format_str().format(**signal2_parameters))
 
         # plot signal 3
         plt.subplot(3, 2, 3)
-        plt.plot(t_predict, y_predict_signal3, '.b-')
+        plt.plot(t_predict, y_predict_signal3, ".b-")
         plt.title(signal3_parameter_space.format_str().format(**signal3_parameters))
 
         # plot signal 4
         plt.subplot(3, 2, 4)
-        plt.plot(t_predict, y_predict_signal4, '.b-')
+        plt.plot(t_predict, y_predict_signal4, ".b-")
         plt.title(signal4_parameter_space.format_str().format(**signal4_parameters))
 
         # plot noise 1
         plt.subplot(3, 2, 5)
-        plt.stem(t_predict, y_predict_noise1, '.b-')
+        plt.stem(t_predict, y_predict_noise1, ".b-")
         plt.title(noise1_parameter_space.format_str().format(**noise1_parameters))
 
         # plot everything stacked
         plt.subplot(3, 2, 6)
-        plt.plot(t_predict, y_predict, '.b-')
+        plt.plot(t_predict, y_predict, ".b-")
         plt.title("combined")
 
         plt.show()
