@@ -1,6 +1,6 @@
 # `sequgen` developer documentation
 
-If you're looking for user documentation, go [here](README.md).
+For user documentation, go [here](README.md).
 
 ## Development install
 
