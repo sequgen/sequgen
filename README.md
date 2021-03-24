@@ -31,7 +31,7 @@ pip3 install sequgen
 
 ## Contributing
 
-For developer documentation, go [here](README.dev.md).
+For developer documentation, go to the [developer's README](README.dev.md).
 
 If you want to contribute to the development of `sequgen`, have a look
 at the [contribution guidelines](CONTRIBUTING.rst).
