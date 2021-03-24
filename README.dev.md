@@ -15,7 +15,7 @@ source venv3/bin/activate
 pip install --upgrade pip 
 
 # (from the project root directory)
-# install howfairis as an editable package
+# install sequgen as an editable package
 pip install --no-cache-dir --editable .
 # install development dependencies
 pip install --no-cache-dir --editable .[dev]

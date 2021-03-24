@@ -1,6 +1,6 @@
 # `sequgen`
 
-For developer documentation, go [here](README.dev.md).
+## Purpose
 
 Programmatically generate synthetic sequence data such as time series, strings, DNA, etc.
 
@@ -31,7 +31,9 @@ pip3 install sequgen
 
 ## Contributing
 
-If you want to contribute to the development of howfairis, have a look
+For developer documentation, go [here](README.dev.md).
+
+If you want to contribute to the development of `sequgen`, have a look
 at the [contribution guidelines](CONTRIBUTING.rst).
 
 ## Credits
