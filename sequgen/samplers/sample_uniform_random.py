@@ -2,6 +2,7 @@ import numpy
 
 
 def sample_uniform_random(dimension_names=None, lower_bounds=None, upper_bounds=None):
+    """ """
 
     if isinstance(dimension_names, list):
         dimension_names = numpy.asarray(dimension_names)
