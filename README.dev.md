@@ -12,7 +12,7 @@ python3 -m venv venv3
 source venv3/bin/activate
 
 # make sure to have a recent version of pip
-pip install --upgrade pip 
+pip install --upgrade pip
 
 # (from the project root directory)
 # install sequgen as an editable package
@@ -65,6 +65,25 @@ like so:
 git config --local core.hooksPath .githooks
 ```
 
+## Documentation
+
+In the Python code use [Google formatted docstrings](https://google.github.io/styleguide/pyguide.html#381-docstrings).
+
+### Generate API documentation locally
+
+The API documentation is hosted at [https:/sequgen.readthedocs.io](https:/sequgen.readthedocs.io) and is automaticly updated when `main` branch is updated.
+
+To generate the API documentation locally do
+
+```shell
+# Install Sphinx dependencies
+pip install -e .[dev]
+cd docs
+make html
+```
+
+The generated <docs/_build/html/index.html> can be opened in web browser for your viewing pleasure.
+
 ## Versioning
 
 Bumping the version across all files is done with bump2version, e.g.
@@ -100,13 +119,13 @@ python3 -m venv venv3
 source venv3/bin/activate
 
 # make sure to have a recent version of pip
-pip install --upgrade pip 
+pip install --upgrade pip
 
 # install runtime dependencies and publishing dependencies
 pip install --no-cache-dir .
 pip install --no-cache-dir .[publishing]
 
-# clean up any previously generated artefacts 
+# clean up any previously generated artefacts
 rm -rf sequgen.egg-info
 rm -rf dist
 
