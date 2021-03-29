@@ -71,7 +71,7 @@ In the Python code use [Google formatted docstrings](https://google.github.io/st
 
 ### Generate API documentation locally
 
-The API documentation is hosted at [https:/sequgen.readthedocs.io](https:/sequgen.readthedocs.io) and is automaticly updated when `main` branch is updated.
+The API documentation is hosted at [https:/sequgen.readthedocs.io](https:/sequgen.readthedocs.io) and is automatically updated when `main` branch is updated.
 
 To generate the API documentation locally do
 
