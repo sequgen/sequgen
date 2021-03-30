@@ -1,0 +1,27 @@
+name: sonarcloud
+
+on:
+ push:
+ pull_request:
+   types: [opened, reopened]
+
+jobs:
+  sonarcloud:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: python -m pip install .[dev]
+      - name: Run unit tests with coverage
+        run: pytest --cov --cov-config=.coveragerc --cov-report html --cov-report term --cov-report xml --junitxml=coverage/xunit-result.xml
+      - name: Correct coverage paths
+        run: sed -i "s+$PWD/++g" coverage/coverage.xml
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
