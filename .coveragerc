@@ -1,6 +1,7 @@
 [run]
 data_file = coverage/.coverage
 branch = true
+source = sequgen
 
 [paths]
 source = sequgen/
