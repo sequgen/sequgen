@@ -13,7 +13,7 @@ sequgen does not build models from real-world sequence data.
 | (1/5) code repository              | [![github repo badge](https://img.shields.io/badge/github-repo-000.svg?logo=github&labelColor=gray&color=blue)](https://github.com/sequgen/sequgen) |
 | (2/5) license                      | [![github license badge](https://img.shields.io/github/license/sequgen/sequgen)](https://github.com/sequgen/sequgen) |
 | (3/5) community registry           | [![pypi badge](https://img.shields.io/pypi/v/sequgen.svg?colorB=blue)](https://pypi.python.org/pypi/sequgen/) |
-| (4/5) citation                     | [![zenodo badge](https://zenodo.org/badge/DOI/10.0000/FIXME.svg)](https://doi.org/10.0000/FIXME) |
+| (4/5) citation                     | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4647702.svg)](https://doi.org/10.5281/zenodo.4647702) |
 | (5/5) checklist                    | [![core infrastructures badge](https://bestpractices.coreinfrastructure.org/projects/4630/badge)](https://bestpractices.coreinfrastructure.org/en/projects/4630) |
 | overall                            | [![fair-software badge](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F-green)](https://fair-software.eu) |
 | **Other best practices**
