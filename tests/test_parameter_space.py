@@ -1,7 +1,6 @@
 import numpy as np
 import pytest
 from numpy.testing import assert_almost_equal
-
 from sequgen.dimension import Dimension
 from sequgen.parameter_space import ParameterSpace
 from sequgen.samplers.sample_uniform_random import sample_uniform_random

@@ -1,5 +1,4 @@
 import pytest
-
 from sequgen.dimension import Dimension
 
 

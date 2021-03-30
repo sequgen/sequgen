@@ -1,6 +1,5 @@
 import numpy as np
 from numpy.testing import assert_almost_equal
-
 from sequgen.samplers.sample_uniform_random import sample_uniform_random
 
 
