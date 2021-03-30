@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Programmatically generate synthetic sequence data such as time series, strings, DNA, etc.
+Programmatically generate synthetic sequence data such as time series, strings, DNA, etc. 
+Sequence data generation is fully controlled by the user. 
+sequgen does not build models from real-world sequence data.
 
 ## Badges
 
@@ -28,6 +30,50 @@ Programmatically generate synthetic sequence data such as time series, strings, 
 ``` {.sourceCode .console}
 pip3 install sequgen
 ```
+
+
+## Usage example
+
+This usage example involves generating time series data. We generate a time series with
+three channels: 1. a normal distribution, 2. Gaussian noise, and 3. the combination (sum) 
+of the first two channels. The normal distribution is positioned between 8 and 12 on an
+abstract time axis of 100 intervals starting at 0 and ending at 20. The standard deviation
+of the distribution is a value between 1 and 2 and its peak has a height between 4 and 5.
+For the Gaussian noise we use the default values (standard deviation 1 and average value 0).
+The third channel is defined as the sum of the other two channels. After creating the
+three channels, graphs with their values are plotted:
+
+```python
+from matplotlib import pyplot as plt
+import numpy
+from sequgen.deterministic.normal_peak import normal_peak
+from sequgen.stochastic.gaussian import gaussian
+from sequgen.parameter_space import ParameterSpace
+from sequgen.dimension import Dimension
+
+time_axis = numpy.linspace(start=0, stop=20, num=101)
+parameter_space_0 = ParameterSpace([
+    Dimension("location", 8, 12),
+    Dimension("stddev", 1, 2),
+    Dimension("height", 4, 5),
+])
+
+channels = []
+channels.append(normal_peak(time_axis, **parameter_space_0.sample()))
+channels.append(gaussian(time_axis))
+channels.append(channels[0] + channels[1])
+titles = [ "channel 1: normal peak", "channel 2: gaussian noise", "channel 3: combined" ]
+
+for i in range(0, len(channels)):
+    plt.subplot(len(channels), 1, i+1)
+    plt.plot(time_axis, channels[i])
+    plt.title(titles[i], y=0.75, x=0.01, loc="left")
+plt.show()
+```
+
+And these are the results:
+
+![alt text](images/usage_example.png)
 
 ## Contributing
 
