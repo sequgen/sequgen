@@ -76,7 +76,7 @@ plt.show()
 
 And these are the results:
 
-![alt text](images/usage_example.png)
+![alt text](docs/_static/usage_example.png)
 
 ## Contributing
 
