@@ -58,16 +58,19 @@ parameter_space_0 = ParameterSpace([
     Dimension("height", 4, 5),
 ])
 
-channels = []
-channels.append(normal_peak(time_axis, **parameter_space_0.sample()))
-channels.append(gaussian(time_axis))
-channels.append(channels[0] + channels[1])
-titles = [ "channel 1: normal peak", "channel 2: gaussian noise", "channel 3: combined" ]
+channel_1 = normal_peak(time_axis, **parameter_space_0.sample())
+channel_2 = gaussian(time_axis)
+channel_3 = channel_1 + channel_2
+channels = { "channel 1: normal peak": channel_1,
+             "channel 2: gaussian noise": channel_2,
+             "channel 3: combined": channel_3 }
 
-for i in range(0, len(channels)):
+i = 0
+for title, channel in channels.items():
     plt.subplot(len(channels), 1, i+1)
-    plt.plot(time_axis, channels[i])
-    plt.title(titles[i], y=0.75, x=0.01, loc="left")
+    plt.plot(time_axis, channel)
+    plt.title(title, y=0.75, x=0.01, loc="left")
+    i += 1
 plt.show()
 ```
 
