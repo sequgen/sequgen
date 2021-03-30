@@ -1,13 +1,7 @@
 import numpy as np
-import pytest
 from numpy.testing import assert_almost_equal
 
 from sequgen.samplers.sample_uniform_random import sample_uniform_random
-
-
-@pytest.fixture
-def random_seeded():
-    np.random.seed(42)
 
 
 def test_with_lists(random_seeded):
