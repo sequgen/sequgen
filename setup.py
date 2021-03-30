@@ -65,6 +65,10 @@ setup(
             "sphinx",
             "yapf"
         ],
+        "publishing": [
+            "twine",
+            "wheel"
+        ]        
     },
     data_files=[("citation/sequgen", ["CITATION.cff"])]
 )
