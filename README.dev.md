@@ -112,7 +112,7 @@ directory:
 cd $(mktemp -d --tmpdir sequgen.XXXXXX)
 
 # fresh git clone ensures the release has the state of origin/main branch
-git clone https://github.com/fair-software/sequgen.git .
+git clone https://github.com/sequgen/sequgen.git .
 
 # prepare a clean virtual environment and activate it
 python3 -m venv venv3
