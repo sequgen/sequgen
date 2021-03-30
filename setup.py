@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 import os
-from sequgen.__version__ import __version__
-
 from setuptools import setup
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -10,9 +8,11 @@ here = os.path.abspath(os.path.dirname(__file__))
 with open("README.md") as readme_file:
     readme = readme_file.read()
 
+version = "0.1.0"
+
 setup(
     name="sequgen",
-    version=__version__,
+    version=version,
     description="Create synthetic sequence data.",
     long_description=readme + "\n\n",
     long_description_content_type="text/markdown",
