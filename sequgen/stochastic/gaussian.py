@@ -1,8 +1,19 @@
 import numpy
 
 
-def gaussian(t_predict, stddev=1, average=0, correlation_length=0):
-    """ """
+def gaussian(t_predict, stddev=1.0, average=0.0, correlation_length=0.0):
+    """Generate an array with an optionally autocorrelated time series of draws from a Normal distribution.
+
+    Args:
+      t_predict (Numpy array):
+        points in time where you want to generate a prediction using this model.
+      stddev (float):
+        standard deviation of the Normal distribution that we will be drawing random samples from.
+      average (float):
+        mean of the Normal distribution that we will be drawing samples from.
+      correlation_length (float):
+        Correlation length in units of `t_predict`. Default is 0.0, for uncorrelated samples.
+    """
     n_elems = len(t_predict)
     if correlation_length == 0:
         return average + stddev * numpy.random.randn(n_elems)

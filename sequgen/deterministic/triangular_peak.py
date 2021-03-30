@@ -4,7 +4,38 @@ import numpy
 # pylint: disable=too-many-arguments
 def triangular_peak(t_predict, width_leading=None, width_base_left=None, width_base_right=None, width_trailing=None,
                     width=1.0, height=1.0, placement=0, sign=1):
-    """ """
+    """Generate a time series containing a triangular peak.
+
+    Args:
+      t_predict (Numpy array):
+        Where you want the model to generate predictions.
+
+      width_leading (float):
+        The width of the leading part of the triangular peak, i.e. the part before the peak starts to climb.
+
+      width_base_left (float):
+        The width of the left part of the triangular peak.
+
+      width_base_right (float):
+        The width of the right part of the triangular peak.
+
+      width_trailing (float):
+        The width of the trailing part of the triangular peak, i.e. the part after the peak returns back to
+        the baseline.
+
+      width (float):
+        The width of entire peak (excluding any leading and trailing parts).
+
+      height (float):
+        The height of the peak.
+
+      placement (float):
+        Where the peak should be placed on the time axis.
+
+      sign (float):
+        Whether the peak should be right side up or upside down.
+
+        """
 
     assert sign in [-1, 1], "sign should be -1 or 1"
 
