@@ -29,6 +29,14 @@ def test_with_unit_integral_false():
     assert "You need to specifiy height when unit_integral is False." in str(excinfo.value)
 
 
+def test_with_unit_integral_invalid_value():
+    t_predict = numpy.linspace(-2.5, 2.5, 11)
+    location = 0.0
+    with pytest.raises(AssertionError) as excinfo:
+        normal_peak(t_predict, location, unit_integral="invalid value")
+    assert "unit_integral should be None, True, or False" in str(excinfo.value)
+
+
 def test_with_height():
     t_predict = numpy.linspace(-2.5, 2.5, 11)
     location = 0.0
