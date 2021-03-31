@@ -35,7 +35,9 @@ def triangular_peak(t_predict, width_leading=None, width_base_left=None, width_b
       sign (float):
         Whether the peak should be right side up or upside down.
 
-        """
+    Returns:
+      Numpy array of shape equal to t_predict containing the curve for a triangular peak.
+    """
 
     assert sign in [-1, 1], "sign should be -1 or 1"
 
