@@ -30,8 +30,9 @@ tools installed.
 # unit tests with mocked representations of repository behavior
 pytest
 pytest tests/
-
 ```
+
+This run will also report the percentage of code covered by the tests.
 
 ## Running linters locally
 
