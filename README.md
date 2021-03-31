@@ -76,7 +76,7 @@ plt.show()
 
 And these are the results:
 
-![alt text](docs/_static/usage_example.png)
+![usage example](https://raw.githubusercontent.com/sequgen/sequgen/main/docs/_static/usage_example.png)
 
 ## Contributing
 
