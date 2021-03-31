@@ -18,6 +18,8 @@ class Dimension:
             Lower bound of the dimension.
           upper_bound (Bound):
             Upper bound of the dimension.
+        Returns:
+          Instance of Dimension.
         """
         self.name = name
         self.lower_bound = lower_bound
