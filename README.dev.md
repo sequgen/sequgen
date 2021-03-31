@@ -32,7 +32,8 @@ pytest
 pytest tests/
 ```
 
-This run will also report the percentage of code covered by the tests.
+This run will also report the percentage of code covered by the tests. Detailed coverage
+information will become available in the directory [coverage](coverage).
 
 ## Running linters locally
 
