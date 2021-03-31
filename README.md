@@ -78,6 +78,8 @@ And these are the results:
 
 ![alt text](docs/_static/usage_example.png)
 
+You can find more usage examples in the notebooks repository on GitHub: https://github.com/sequgen/notebooks. 
+
 ## Contributing
 
 For developer documentation, go to the [developer's README](README.dev.md).
