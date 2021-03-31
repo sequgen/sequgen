@@ -17,7 +17,7 @@ def test_with_defaults():
 def test_with_placement():
     t_predict = np.arange(7)
 
-    result = triangular_peak(t_predict, placement=3, width_base_right=2)
+    result = triangular_peak(t_predict, location=3, width_base_right=2)
 
     # TODO expected peak=1 at position 3
     expected = np.array([0., 0., 0., 0.5, 0., 0., 0.])
@@ -27,7 +27,7 @@ def test_with_placement():
 def test_with_base_both_sides():
     t_predict = np.arange(7)
 
-    result = triangular_peak(t_predict, placement=3, width_base_left=2, width_base_right=2)
+    result = triangular_peak(t_predict, location=3, width_base_left=2, width_base_right=2)
 
     # TODO expected peak=1 at position 3
     expected = np.array([0., 0., 0., 0., 0.5, 1., 0.5])
