@@ -3,7 +3,7 @@ import numpy
 
 # pylint: disable=too-many-arguments
 def triangular_peak(t_predict, width_leading=None, width_base_left=None, width_base_right=None, width_trailing=None,
-                    width=1.0, height=1.0, placement=0, sign=1):
+                    width=1.0, height=1.0, location=0, sign=1):
     """Generate a time series containing a triangular peak.
 
     Args:
@@ -29,7 +29,7 @@ def triangular_peak(t_predict, width_leading=None, width_base_left=None, width_b
       height (float):
         The height of the peak.
 
-      placement (float):
+      location (float):
         Where the peak should be placed on the time axis.
 
       sign (float):
@@ -66,6 +66,6 @@ def triangular_peak(t_predict, width_leading=None, width_base_left=None, width_b
         widths.pop(-1)
         y.pop(-1)
 
-    t = placement + numpy.cumsum(widths)
+    t = location + numpy.cumsum(widths)
 
     return sign * numpy.interp(t_predict, t, y)
