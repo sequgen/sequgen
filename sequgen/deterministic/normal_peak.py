@@ -1,7 +1,7 @@
 import numpy
 
 
-def normal_peak(t_predict, location=0.0, stddev=1.0, unit_integral=None, height=None):
+def normal_peak(t_predict, location, stddev=1.0, unit_integral=None, height=None):
     """Generates a peak whose shape is the gaussian distribution function
     Args:
       t_predict:
