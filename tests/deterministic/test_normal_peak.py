@@ -12,13 +12,21 @@ def test_without_height_or_unit_integral():
     assert actual_height_max == pytest.approx(expected_height_max), "Expected maximum height at t=0"
 
 
-def test_with_unit_integral():
+def test_with_unit_integral_true():
     t_predict = numpy.linspace(-2.5, 2.5, 11)
     location = 0.0
     actual = normal_peak(t_predict, location, unit_integral=True)
     expected_height_max = 1 / numpy.sqrt(2 * numpy.pi)
     actual_height_max = actual[t_predict == 0.][0]
     assert actual_height_max == pytest.approx(expected_height_max), "Expected maximum height at t=0"
+
+
+def test_with_unit_integral_false():
+    t_predict = numpy.linspace(-2.5, 2.5, 11)
+    location = 0.0
+    with pytest.raises(AssertionError) as excinfo:
+        normal_peak(t_predict, location, unit_integral=False)
+    assert "You need to specifiy height when unit_integral is False." in str(excinfo.value)
 
 
 def test_with_height():
@@ -30,7 +38,7 @@ def test_with_height():
     assert actual_height_max == pytest.approx(expected_height_max), "Expected maximum height at t=0"
 
 
-def test_with_height_and_unit_integral():
+def test_with_height_and_unit_integral_true():
     location = 0.0
     t_predict = numpy.linspace(-2.5, 2.5, 11)
     with pytest.raises(AssertionError) as excinfo:
