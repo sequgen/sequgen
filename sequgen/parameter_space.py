@@ -18,7 +18,10 @@ class ParameterSpace:
         Args:
           dimensions (Dimensions): dimensions of the parameter space.
           sampler (Callable): callable with which to draw a sample from the parameter space
-          """
+
+        Returns:
+          Instance of ParameterSpace.
+        """
         self.dimension_names = list()
         self.lower_bounds = list()
         self.upper_bounds = list()

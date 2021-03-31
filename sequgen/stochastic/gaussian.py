@@ -13,6 +13,10 @@ def gaussian(t_predict, stddev=1.0, average=0.0, correlation_length=0.0):
         mean of the Normal distribution that we will be drawing samples from.
       correlation_length (float):
         Correlation length in units of `t_predict`. Default is 0.0, for uncorrelated samples.
+
+    Returns:
+      Numpy array of shape equal to t_predict, where each elem is a random and optionally autocorrelated draw from
+      a Normal distribution.
     """
     n_elems = len(t_predict)
     if correlation_length == 0:
