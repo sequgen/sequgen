@@ -43,7 +43,7 @@ setup(
     test_suite="tests",
     install_requires=[
         "matplotlib >= 3.3",
-        "numpy"
+        "numpy >= 1.19"
     ],
     setup_requires=[
     ],
