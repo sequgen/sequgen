@@ -25,3 +25,15 @@ def test_with_required_args_and_skewness():
     default_height = 1.0
     assert actual[t_predict == location] == default_height, "expected maximum height at t == location"
     assert_almost_equal(actual, expected)
+
+def test_with_zero_base_left():
+    t_predict = np.linspace(0, 5, 11)  # array([0. , 0.5, 1. , 1.5, 2. , 2.5, 3. , 3.5, 4. , 4.5, 5. ])
+    actual = triangular_peak(t_predict, width_base_left=0.0, width_base_right=2.0, location=1.0)
+    expected = np.array([])
+    assert_almost_equal(actual, expected)
+
+def test_with_zero_base_right():
+    t_predict = np.linspace(0, 5, 11)
+    actual = triangular_peak(t_predict, width_base_left=2.0, width_base_right=0.0, location=3.0)
+    expected = np.array([])
+    assert_almost_equal(actual, expected)
