@@ -21,13 +21,10 @@ def boxcar(t_predict, location=1.0, height=1.0, width=1.0):
       Numpy array of shape equal to t_predict containing the signal with the boxcar plateau.
     """
 
-    def boxcar_value(value, location, height, width):
-        if value < location or value > location + width:
-            return 0
-        return height
+    lower = min(location, location+width)
+    upper = max(location, location+width)
+    plateau = (lower <= t_predict) & (t_predict <= upper)
+    boxcar_data = numpy.zeros_like(t_predict)
+    boxcar_data[plateau] = height
 
-    if width < 0:
-        location = location + width
-        width = -width
-
-    return numpy.array([boxcar_value(value, location, height, width) for value in t_predict])
+    return boxcar_data
