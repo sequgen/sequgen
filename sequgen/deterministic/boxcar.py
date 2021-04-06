@@ -1,7 +1,7 @@
 import numpy
 
 
-def boxcar(t_predict, location=1.0, height=1.0, width=1.0):
+def boxcar(t_predict, location, width, height=1.0):
     """Generate a time series containing boxcar function.
 
     Args:
@@ -21,9 +21,9 @@ def boxcar(t_predict, location=1.0, height=1.0, width=1.0):
       Numpy array of shape equal to t_predict containing the signal with the boxcar plateau.
     """
 
-    lower = min(location, location+width)
-    upper = max(location, location+width)
-    plateau = (lower <= t_predict) & (t_predict <= upper)
+    assert width > 0, "width should be greater than zero"
+
+    plateau = (location <= t_predict) & (t_predict <= location + width)
     boxcar_data = numpy.zeros_like(t_predict)
     boxcar_data[plateau] = height
 
