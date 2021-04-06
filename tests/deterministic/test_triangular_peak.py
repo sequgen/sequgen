@@ -28,11 +28,11 @@ def test_with_required_args_and_skewness():
     assert_almost_equal(actual, expected)
 
 
-def test_with_zero_base_left():
-    t_predict = np.linspace(0, 5, 11)
-    with pytest.raises(AssertionError) as excinfo:
-        triangular_peak(t_predict, width_base_left=0.0, width_base_right=2.0, location=1.0)
-    assert "width_base_left should be > 0" in str(excinfo.value)
+def test_with_small_base_left_irregular_sampling():
+    t_predict = np.asarray([0, 1-1e-9, 1, 2, 3, 10])
+    actual = triangular_peak(t_predict, width_base_left=1e-9, width_base_right=2.0, location=1.0)
+    expected = np.array([0., 0., 1., 0.50, 0., 0.])
+    assert_almost_equal(actual, expected)
 
 
 def test_with_small_base_left_regular_sampling():
@@ -42,18 +42,11 @@ def test_with_small_base_left_regular_sampling():
     assert_almost_equal(actual, expected)
 
 
-def test_with_small_base_left_irregular_sampling():
-    t_predict = np.asarray([0, 1-1e-9, 1, 2, 3, 10])
-    actual = triangular_peak(t_predict, width_base_left=1e-9, width_base_right=2.0, location=1.0)
-    expected = np.array([0., 0., 1., 0.50, 0., 0.])
+def test_with_small_base_right_irregular_sampling():
+    t_predict = np.asarray([0, 1.0, 2.0, 3.0, 3+1e-9, 10])
+    actual = triangular_peak(t_predict, width_base_left=2.0, width_base_right=1e-9, location=3.0)
+    expected = np.array([0., 0., 0.50, 1.0, 0., 0.])
     assert_almost_equal(actual, expected)
-
-
-def test_with_zero_base_right_regular_sampling():
-    t_predict = np.linspace(0, 5, 11)
-    with pytest.raises(AssertionError) as excinfo:
-        triangular_peak(t_predict, width_base_left=2.0, width_base_right=0.0, location=3.0)
-    assert "width_base_right should be > 0" in str(excinfo.value)
 
 
 def test_with_small_base_right_regular_sampling():
@@ -63,8 +56,15 @@ def test_with_small_base_right_regular_sampling():
     assert_almost_equal(actual, expected)
 
 
-def test_with_small_base_right_irregular_sampling():
-    t_predict = np.asarray([0, 1.0, 2.0, 3.0, 3+1e-9, 10])
-    actual = triangular_peak(t_predict, width_base_left=2.0, width_base_right=1e-9, location=3.0)
-    expected = np.array([0., 0., 0.50, 1.0, 0., 0.])
-    assert_almost_equal(actual, expected)
+def test_with_zero_base_left():
+    t_predict = np.linspace(0, 5, 11)
+    with pytest.raises(AssertionError) as excinfo:
+        triangular_peak(t_predict, width_base_left=0.0, width_base_right=2.0, location=1.0)
+    assert "width_base_left should be > 0" in str(excinfo.value)
+
+
+def test_with_zero_base_right_regular_sampling():
+    t_predict = np.linspace(0, 5, 11)
+    with pytest.raises(AssertionError) as excinfo:
+        triangular_peak(t_predict, width_base_left=2.0, width_base_right=0.0, location=3.0)
+    assert "width_base_right should be > 0" in str(excinfo.value)
