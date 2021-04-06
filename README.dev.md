@@ -101,7 +101,7 @@ bump2version minor
 1.  Update the `CHANGELOG.md`
 2.  Verify that the information in `CITATION.cff` is correct, and that
     `.zenodo.json` contains equivalent data
-3.  Make sure the version has been updated.
+3.  Update the version with `bump2version minor` and verify that this has worked correctly
 4.  Run the unit tests with `pytest tests/`
 
 ### PyPI
@@ -149,7 +149,7 @@ which sequgen
 python3 -m pip uninstall sequgen
 
 # install in user space from test pypi instance:
-python3 -m pip -v install --user --no-cache-dir \
+python3 -m pip -v install --no-cache-dir \
 --index-url https://test.pypi.org/simple/ \
 --extra-index-url https://pypi.org/simple sequgen
 ```
