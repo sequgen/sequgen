@@ -4,21 +4,21 @@ import pytest
 from sequgen.deterministic.triangular_peak import triangular_peak
 
 
-def test_with_required_args():
+def test_with_base_widths_and_location():
     t_predict = np.linspace(0, 5, 11)
     actual = triangular_peak(t_predict, width_base_left=1.0, width_base_right=1.0, location=1.0)
     expected = np.array([0, 0.5, 1.0, 0.5, 0., 0., 0., 0., 0., 0., 0.])
     assert_almost_equal(actual, expected)
 
 
-def test_with_required_args_and_height():
+def test_with_base_widths_and_location_and_height():
     t_predict = np.linspace(0, 5, 11)
     actual = triangular_peak(t_predict, width_base_left=1.0, width_base_right=1.0, location=1.0, height=2.0)
     expected = np.array([0, 1.0, 2.0, 1.0, 0., 0., 0., 0., 0., 0., 0.])
     assert_almost_equal(actual, expected)
 
 
-def test_with_required_args_and_skewness():
+def test_with_base_widths_with_skewness_and_location():
     t_predict = np.linspace(0, 5, 11)
     location = 1.0
     actual = triangular_peak(t_predict, width_base_left=1.0, width_base_right=2.0, location=location)
@@ -53,6 +53,13 @@ def test_with_small_base_right_regular_sampling():
     t_predict = np.linspace(0, 5, 11)
     actual = triangular_peak(t_predict, width_base_left=2.0, width_base_right=1e-9, location=3.0)
     expected = np.array([0., 0., 0., 0.25, 0.50, 0.75, 1.0, 0., 0., 0., 0.])
+    assert_almost_equal(actual, expected)
+
+
+def test_with_width_and_location():
+    t_predict = np.linspace(0, 5, 11)
+    actual = triangular_peak(t_predict, width=2.0, location=1.0)
+    expected = np.array([0, 0.5, 1.0, 0.5, 0., 0., 0., 0., 0., 0., 0.])
     assert_almost_equal(actual, expected)
 
 
