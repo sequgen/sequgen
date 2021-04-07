@@ -4,7 +4,11 @@ import pytest
 from sequgen.deterministic.triangular_peak import triangular_peak
 
 
-# width, width_base_left, width_base_right, height
+"""
+In the test names below, the t and f represents whether the user has defined arguments
+width, width_base_left, width_base_right, height (in that order)
+"""
+
 
 def test_with_fttf_and_location():
     t_predict = np.linspace(0, 5, 11)
